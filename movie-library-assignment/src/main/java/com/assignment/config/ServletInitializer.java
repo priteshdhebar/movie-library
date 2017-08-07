@@ -1,4 +1,4 @@
-package com.assignment;
+package com.assignment.config;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
