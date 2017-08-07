@@ -1,4 +1,4 @@
-package movielibraryservice.service.utils;
+package com.microservices.service.utils;
 
 import java.util.UUID;
 

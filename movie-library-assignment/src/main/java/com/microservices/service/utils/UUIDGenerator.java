@@ -1,4 +1,4 @@
-package movielibraryservice.service.utils;
+package com.microservices.service.utils;
 
 public interface UUIDGenerator {
 

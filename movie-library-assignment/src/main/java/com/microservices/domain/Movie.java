@@ -1,4 +1,4 @@
-package movielibraryservice.domain;
+package com.microservices.domain;
 
 import java.util.Date;
 import java.util.Set;
@@ -8,6 +8,21 @@ import java.util.Set;
  */
 public class Movie {
 
+	public static final String ENTITY_TAG = "MDTO";
+	
+	public Movie(){
+		
+	}
+	
+	public Movie(Integer id,String uuId,String name,Genre genre,Set<CastAndCrew> castAndCrews,Date releaseDate){
+		this.id = id;
+		this.uuId = uuId;
+		this.name = name;
+		this.genre = genre;
+		this.castAndCrews = castAndCrews;
+		this.releaseDate = releaseDate;
+	}
+	
 	private Integer id;
 	private String uuId;
 	private String name;

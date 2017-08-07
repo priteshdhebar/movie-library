@@ -1,22 +1,18 @@
-package movielibraryservice.domain;
+package com.microservices.dto;
 
 import java.util.Date;
 import java.util.Set;
 
-import movielibraryservice.enums.CrewType;
+import com.microservices.enums.CrewType;
 
-/**
- * A CastAndCrew.
- */
-public class CastAndCrew {
+public class CastAndCrewDTO {
 
 	private Integer id;
 	private String uuId;
 	private CrewType type;
 	private String name;
 	private Date birthDate;
-	//used for many to many relationship with movies(create relationship table for mapping) when we persist data to Database using ORM 
-	private Set<Movie> movies;
+	private Set<MovieDTO> movieDTOs;
 	
 	public Integer getId() {
 		return id;
@@ -48,11 +44,11 @@ public class CastAndCrew {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	public Set<Movie> getMovies() {
-		return movies;
+	public Set<MovieDTO> getMovieDTOs() {
+		return movieDTOs;
 	}
-	public void setMovies(Set<Movie> movies) {
-		this.movies = movies;
-	}	
+	public void setMovieDTOs(Set<MovieDTO> movieDTOs) {
+		this.movieDTOs = movieDTOs;
+	}
 	
 }

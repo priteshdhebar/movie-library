@@ -1,4 +1,4 @@
-package movielibraryservice.enums;
+package com.microservices.enums;
 
 /**
  * The CrewType enumeration.
