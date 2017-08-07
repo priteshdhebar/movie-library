@@ -41,7 +41,13 @@ public class MovieResource {
         if (movieDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("movie", "idexists", "A new movie cannot already have an ID")).body(null);
         }
-        MovieDTO result = movieService.saveOrUpdate(movieDTO);
+        MovieDTO result = null;
+        try{
+        	result = movieService.saveOrUpdate(movieDTO);
+        }catch(Exception e){
+        	System.out.println(e.getMessage());
+        }
+        
         return ResponseEntity.created(new URI("/services/movie/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("movie", result.getId().toString()))
             .body(result);
@@ -51,7 +57,13 @@ public class MovieResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MovieDTO> updateMovie(@Valid @RequestBody MovieDTO movieDTO) throws URISyntaxException {
-        MovieDTO result = movieService.saveOrUpdate(movieDTO);
+    	MovieDTO result = null;
+    	try{
+    		result = movieService.saveOrUpdate(movieDTO);
+        }catch(Exception e){
+        	System.out.println(e.getMessage());
+        }
+        
         return ResponseEntity.created(new URI("/services/movie/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("movie", result.getId().toString()))
             .body(result);
@@ -61,7 +73,13 @@ public class MovieResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<MovieDTO>> getAllMovies(Pageable pageable) throws URISyntaxException {
-        Collection<MovieDTO> movieDTOs = movieService.getMovies();
+    	Collection<MovieDTO> movieDTOs = null;
+    	try{
+    		movieDTOs = movieService.getMovies();
+        }catch(Exception e){
+        	System.out.println(e.getMessage());
+        }
+        
         return Optional.ofNullable(movieDTOs)
                 .map(result -> new ResponseEntity<>(
                     result,
@@ -73,7 +91,13 @@ public class MovieResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MovieDTO> getMovie(@PathVariable Integer id) {
-        MovieDTO movieDTO = movieService.getMovie(id);
+    	MovieDTO movieDTO = null;
+    	try{
+    		movieDTO = movieService.getMovie(id);
+        }catch(Exception e){
+        	System.out.println(e.getMessage());
+        }
+        
         return Optional.ofNullable(movieDTO)
             .map(result -> new ResponseEntity<>(
                 result,
@@ -85,7 +109,11 @@ public class MovieResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> deleteMovie(@PathVariable Integer id) {
-        movieService.delete(id);
+    	try{
+    		movieService.delete(id);
+        }catch(Exception e){
+        	System.out.println(e.getMessage());
+        }        
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("movie", id.toString())).build();
     }
 	

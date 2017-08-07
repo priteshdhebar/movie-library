@@ -21,25 +21,25 @@ public class MovieService {
 	@Inject
 	private MovieCache movieCache;
 	
-    public MovieDTO saveOrUpdate(MovieDTO movieDTO) {
+    public MovieDTO saveOrUpdate(MovieDTO movieDTO) throws Exception{
         Movie movie = movieMapper.movieDTOToMovie(movieDTO);
         MovieDTO result = movieMapper.movieToMovieDTO(movieCache.saveOrupdateMovies(movie));
         return result;
     }
     
-    public Collection<MovieDTO> saveOrUpdate() {        
+    public Collection<MovieDTO> saveOrUpdate() throws Exception{        
         return movieMapper.moviesToMovieDTOs(movieCache.getMovies());
     }
     
-    public void delete(Integer movieId) {        
+    public void delete(Integer movieId) throws Exception{        
         movieCache.deleteMovie(movieId);
     }
     
-    public MovieDTO getMovie(Integer movieId) {        
+    public MovieDTO getMovie(Integer movieId) throws Exception{        
         return movieMapper.movieToMovieDTO(movieCache.getMovie(movieId));
     }
     
-    public Collection<MovieDTO> getMovies() {        
+    public Collection<MovieDTO> getMovies() throws Exception{        
         return movieMapper.moviesToMovieDTOs(movieCache.getMovies());
     }
 	

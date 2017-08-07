@@ -27,7 +27,7 @@ public class ClientController {
     @RequestMapping(value = "/movie/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MovieDTO> getMovie(@PathVariable Integer id) {
+    public ResponseEntity<MovieDTO> getMovie(@PathVariable Integer id) throws Exception{
         return Optional.ofNullable(clientMovieLibraryService.getMovie(id))
             .map(result -> new ResponseEntity<>(
                 result,
@@ -39,7 +39,11 @@ public class ClientController {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> deleteMovie(@PathVariable Integer id) {
-    	clientMovieLibraryService.delete(id);
+    	try{
+    		clientMovieLibraryService.delete(id);
+    	}catch(Exception e){
+    		System.out.println(e.getMessage());
+    	}    	
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("movie", id.toString())).build();
     }	
 	

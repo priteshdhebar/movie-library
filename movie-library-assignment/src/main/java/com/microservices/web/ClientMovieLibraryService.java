@@ -21,11 +21,11 @@ public class ClientMovieLibraryService {
 				: "http://" + serviceUrl;
 	}
 	
-	public void delete(Integer id) {
+	public void delete(Integer id) throws Exception{
 		restTemplate.delete(serviceUrl + "/services/movie/{id}", id);
 	}
 	
-	public MovieDTO getMovie(Integer id) {
+	public MovieDTO getMovie(Integer id) throws Exception{
 		return restTemplate.getForObject(serviceUrl + "/services/movie/{id}",
 				MovieDTO.class, id);
 	}
