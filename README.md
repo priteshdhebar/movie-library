@@ -1,6 +1,6 @@
 # movie-library
 
-Getting java.lang.IllegalStateException: No instances available for MOVIE-SERVICE(tried with http://localhost:1111 and http://127.0.0.1:1111) but no luck
+Getting java.lang.IllegalStateException: No instances available for MOVIE-SERVICE(tried with http://localhost:2222 and http://127.0.0.1:2222) but no luck
 
 ## Deployment
 
